@@ -1,7 +1,12 @@
 import React from "react";
-import MusicList from "./music/MusicList";
+import getTopMusics from "../spotify/getTopMusics"
+import MusicList from "./home/MusicList";
 
-const Home = (topMusicJSON) => {
+const Home = () => {
+
+    getTopMusics(20);
+    const topMusicsJSON = JSON.parse(localStorage.getItem("topMusics"));
+
     return (
         <div className="home-container">
             <section className="home-header">
@@ -12,7 +17,7 @@ const Home = (topMusicJSON) => {
                 </div>
             </section>
             <section className="home-content">
-                <MusicList JsonInfo={topMusicJSON.topMusicJSON} />
+                <MusicList JsonInfo={topMusicsJSON} />
             </section>
         </div>
     );
