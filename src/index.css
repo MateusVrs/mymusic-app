@@ -8,6 +8,8 @@
   --text-main-color: hsl(0, 0%, 75%);
   --text-main-font: 'Lato', sans-serif;
   --bg-input-search: hsl(0, 0%, 85%);
+  --secundary-color: hsla(240, 50%, 88%, 0.9);
+  --top-gradient-color: hsla(240, 50%, 88%, 0.35);
 }
 
 html, body {
@@ -23,14 +25,29 @@ body {
   color: var(--text-main-color);
 }
 
+body::-webkit-scrollbar {
+  background-color: transparent;
+  width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--top-gradient-color);
+  border-radius: 10px;
+}
+
+#root {
+  background-color: var(--app-main-color);
+  background-image: linear-gradient(to bottom, var(--top-gradient-color) 0 0.5%, var(--app-main-color) 10% 100%);
+} 
+
 .container {
-  max-width: 960px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 .home-header {
   padding: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -67,8 +84,8 @@ input:focus {
 
 .music-list {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 1.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
   align-items: end;
 }
 
@@ -80,18 +97,45 @@ input:focus {
 .topmusic-card {
   display: flex;
   gap: 10px;
-  align-items: center;
+  align-items: stretch;
   justify-content: flex-start;
   background-image: linear-gradient(to bottom, hsla(0, 0%, 25%, 1), hsla(0, 0%, 25%, 0.5));
   width: 95%;
   border-radius: 15px;
+  position: relative;
+  height: 155px;
 }
 
 .topmusic-card:hover {
   background-image: linear-gradient(to bottom, hsla(0, 0%, 25%, 1), hsla(0, 0%, 25%, 0.4));
 }
 
+.topmusic-card .play-icon {
+  top: 8px;
+  right: 8px;
+  position: absolute;
+  transform: scale(1.2);
+  color: var(--secundary-color);
+  box-shadow: none;
+}
+
+.topmusic-card .play-icon:hover {
+  cursor: pointer;
+}
+
+.topmusic-card-link {
+  color: var(--text-main-color);
+}
+
+.topmusic-card-link img {
+  width: 155px;
+  height: 155px;
+}
+
 .topmusic-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-size: 12px;
 }
 
