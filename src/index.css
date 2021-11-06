@@ -5,6 +5,7 @@
 
 :root {
   --app-main-color: hsl(0, 0%, 6%);
+  --nav-main-color: hsl(0, 0%, 4%);
   --text-main-color: hsl(0, 0%, 75%);
   --text-main-font: 'Lato', sans-serif;
   --bg-input-search: hsl(0, 0%, 85%);
@@ -19,6 +20,7 @@ html, body {
 body {
   margin: 0;
   font-family: var(--text-main-font);
+  font-size: 1rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--app-main-color);
@@ -41,8 +43,11 @@ body::-webkit-scrollbar-thumb {
 } 
 
 .container {
-  max-width: 1100px;
-  margin: 0 auto;
+  display:  flex;
+}
+
+.home-container {
+  width: 100%;
 }
 
 .home-header {
@@ -50,7 +55,35 @@ body::-webkit-scrollbar-thumb {
   margin-bottom: 5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+.nav-container, .asidebar-container {
+  background-color: var(--nav-main-color);
+  width: 250px;
+}
+
+.nav-items-container {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 0 30px 30px;
+  gap: 20px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 700;
+  color: var(--text-main-color);
+  text-decoration: none;
+  border-radius: 15px 0 0 15px;
+  padding: 5px;
+}
+
+.nav-item:hover, .navHome, .navSearch, .navGenres {
+  background-color: var(--text-main-color);
+  color: var(--nav-main-color);
 }
 
 .search-container {
@@ -75,6 +108,27 @@ body::-webkit-scrollbar-thumb {
 
 input:focus {
   outline: none;
+}
+
+.music-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.music-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
+}
+
+.music-content {
+  display: flex;
+  justify-content: center;
+}
+
+.music-content iframe {
+  height: 380px;
+  border-radius: 15px;
 }
 
 .music-list-container > h1 {
@@ -141,4 +195,25 @@ input:focus {
 
 .topmusic-content img {
   border-radius: 15px;
+}
+
+@media (max-width: 850px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-container {
+    width: 100%;
+  }
+
+  .nav-items-container {
+    padding: 20px;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .asidebar-container {
+    display: none;
+  }
 }
