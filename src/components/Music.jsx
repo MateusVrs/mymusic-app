@@ -1,30 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import getMusic from "../spotify/getMusic";
 import Header from "./music/Header";
 import Content from "./music/Content";
-import Footer from "./music/Footer";
+import { useState } from "react/cjs/react.development";
 
-function Music(props) {
-    let { musicPath, artistPath } = useParams();
-    const searchMusic = getMusic(musicPath, artistPath);
-    console.log(searchMusic);
+function Music() {
+    const { musicPath, artistPath } = useParams();
+    const [trackJSON, setTrackJSON] = useState(null);
 
-    return (
-        <div className="music-container" >
-            <Header artistInfo={searchMusic.artists} />
-            <Content musicInfo={searchMusic} />
-            <Footer musicInfo={searchMusic} />
-        </div>
-    );
+    useEffect(() => {
+        async function updateTrackJSON() {
+            const returnedMusic = await getMusic(musicPath, artistPath);
+            if (returnedMusic !== null) {
+                setTrackJSON(returnedMusic);
+            }
+        }
+
+        updateTrackJSON();
+    }, [musicPath, artistPath]);
+
+    if (trackJSON == null) {
+        return (
+            <div className="music-container" >
+            </div>
+        );
+    } else {
+        return (
+            <div className="music-container" >
+                <Header artistInfo={trackJSON.artists} musicInfo={trackJSON} />
+                <Content spotifyMusicId={trackJSON.id} />
+            </div>
+        );
+    }
 }
 
 export default Music;
-
-/*
-    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${props.API_KEY}&type=channel&q=${artistPath}&maxResults=3`;
-
-    fetch(url).then(response => response.json()).then(data => {
-        data.items.map(item => console.log(item.snippet));
-    });
-*/
