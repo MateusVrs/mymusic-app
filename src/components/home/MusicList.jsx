@@ -1,12 +1,21 @@
 import React from "react";
-import TopMusicCard from "./TopMusicCard";
+import MusicCard from "../MusicCard";
 
 const MusicList = ({ JsonInfo }) => {
     return (
         <div className="music-list-container">
             <h1>Top 20 Global Musics</h1>
             <div className="music-list">
-                {JsonInfo.map((info, index) => <TopMusicCard key={index} musicJSON={info} />)}
+                {JsonInfo.map((info, index) => {
+                    const track = info.track;
+                    const musicPath = track.name.toLowerCase().replace(/[\])}[{(]/g, "").split(" ").join("-");
+                    const artistPath = track.artists[0].name.toLowerCase().replace(/[\])}[{(]/g, "").split(" ").join("-");
+                    const albumImg = track.album.images[0].url;
+                    const musicName = track.name;
+                    const artistName = track.artists[0].name;
+
+                    return <MusicCard key={index} musicPath={musicPath} artistPath={artistPath} musicName={musicName} artistName={artistName} albumImg={albumImg} />
+                })}
             </div>
         </div>
     );
