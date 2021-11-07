@@ -38,21 +38,23 @@ body::-webkit-scrollbar-thumb {
 }
 
 #root {
+  min-height: 100vh;
   background-color: var(--app-main-color);
   background-image: linear-gradient(to bottom, var(--top-gradient-color) 0 0.5%, var(--app-main-color) 10% 100%);
 } 
 
 .container {
   display:  flex;
+  min-height: 100vh;
 }
 
 .home-container {
   width: 100%;
 }
 
-.home-header {
+.main-header {
   padding: 10px;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,7 +80,7 @@ body::-webkit-scrollbar-thumb {
   color: var(--text-main-color);
   text-decoration: none;
   border-radius: 15px 0 0 15px;
-  padding: 5px;
+  padding: 5px 10px 5px 5px;
 }
 
 .nav-item:hover, .navHome, .navSearch, .navGenres {
@@ -87,68 +89,95 @@ body::-webkit-scrollbar-thumb {
 }
 
 .search-container {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.search-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  margin: 20px;
+  margin-bottom: 3rem;
+  gap: 10px;
+}
+
+.search-header .main-header {
+  margin: 0;
+  padding: 0;
+}
+
+.search-item {
   display: flex;
   align-items: center;
   position: relative;
 }
 
-.search-icon {
-  position: absolute;
-  color: var(--app-main-color);
-  font-weight: 100;
-}
-
-.search {
-  background-color: var(--bg-input-search);
+.search-item input {
   border: none;
   border-radius: 15px;
-  padding: 5px;
-  padding-left: 25px;
+  background-color: var(--bg-input-search);
+  padding: 5px 5px 5px 23px;
 }
 
-input:focus {
+.search-item input:focus {
   outline: none;
 }
 
-.music-container {
-  width: 100%;
-  height: 100vh;
+.search-item .search-icon {
+  position: absolute;
+  color: var(--app-main-color);
 }
 
-.music-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  margin-top: 1rem;
-}
-
-.music-content {
+.music-list-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
-.music-content iframe {
-  height: 380px;
-  border-radius: 15px;
-}
-
-.music-list-container > h1 {
+.music-list-container h1 {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 1rem;
 }
 
-.music-list {
+.music-list, .search-music-list {
   display: grid;
   gap: 1.6rem;
   grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
   align-items: end;
 }
 
-.topmusic-card-container {
+
+/* Music Page */
+.music-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.music-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 1.5rem 0 1.5rem;
+  gap: 10px;
+}
+
+.music-content {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.topmusic-card {
+.music-content iframe {
+  border-radius: 15px;
+}
+
+.music-card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.music-card {
   display: flex;
   gap: 10px;
   align-items: stretch;
@@ -160,11 +189,11 @@ input:focus {
   height: 155px;
 }
 
-.topmusic-card:hover {
+.music-card:hover {
   background-image: linear-gradient(to bottom, hsla(0, 0%, 25%, 1), hsla(0, 0%, 25%, 0.4));
 }
 
-.topmusic-card .play-icon {
+.music-card .play-icon {
   top: 8px;
   right: 8px;
   position: absolute;
@@ -173,44 +202,57 @@ input:focus {
   box-shadow: none;
 }
 
-.topmusic-card .play-icon:hover {
+.music-card .play-icon:hover {
   cursor: pointer;
 }
 
-.topmusic-card-link {
+.music-card-link {
   color: var(--text-main-color);
 }
 
-.topmusic-card-link img {
+.music-card-link img {
   width: 155px;
   height: 155px;
 }
 
-.topmusic-info {
+.music-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   font-size: 12px;
 }
 
-.topmusic-content img {
+.music-content img {
   border-radius: 15px;
 }
 
 @media (max-width: 850px) {
+  #root {
+    background-image: linear-gradient(to bottom, var(--top-gradient-color) 0% 10.5%, var(--app-main-color) 20% 100%);
+  }
+
   .container {
     display: flex;
     flex-direction: column;
   }
 
+  .music-content iframe {
+    height: 20em;
+  }
+
   .nav-container {
     width: 100%;
+    height: 75px;
   }
 
   .nav-items-container {
     padding: 20px;
     flex-direction: row;
     justify-content: center;
+  }
+
+  .nav-item {
+    border-radius: 15px;
   }
 
   .asidebar-container {
