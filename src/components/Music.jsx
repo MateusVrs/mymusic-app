@@ -1,24 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import getMusic from "../spotify/getMusic";
 import Header from "./music/Header";
 import Content from "./music/Content";
-import { useState } from "react/cjs/react.development";
 
 function Music() {
-    const { musicPath, artistPath } = useParams();
+    const { musicId } = useParams();
     const [trackJSON, setTrackJSON] = useState(null);
 
     useEffect(() => {
         async function updateTrackJSON() {
-            const returnedMusic = await getMusic(musicPath, artistPath);
+            const returnedMusic = await getMusic(musicId);
             if (returnedMusic !== null) {
                 setTrackJSON(returnedMusic);
             }
         }
 
         updateTrackJSON();
-    }, [musicPath, artistPath]);
+    }, [musicId]);
 
     if (trackJSON == null) {
         return (
