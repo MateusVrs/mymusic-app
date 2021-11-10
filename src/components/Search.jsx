@@ -5,22 +5,24 @@ import searchMusic from "../spotify/searchMusic";
 
 const Search = () => {
     const [musics, setMusics] = useState(null);
+    var interval;
 
     async function handleOnChange(searchValue) {
+        console.log("search");
         const returnedMusics = await searchMusic(searchValue, 10);
         if (returnedMusics !== null) {
             setMusics(returnedMusics);
         }
     }
 
-    function userTyping(value) {
+    async function userTyping(value) {
         clearTimeout(interval);
-        var interval = setTimeout(() => handleOnChange(value), 1200);
+        interval = setTimeout(() => handleOnChange(value), 1800);
     }
 
     return (
-        <div className="search-container">
-            <div className="search-header">
+        <main className="search-container">
+            <header className="search-header">
                 <MainHeader />
                 <div className="search-item">
                     <span className="material-icons search-icon">search</span>
@@ -30,11 +32,11 @@ const Search = () => {
                         }
                     }} />
                 </div>
-            </div>
-            <div className="search-content-container">
+            </header>
+            <section className="search-content-container">
                 {musics ? <SearchResult musicInfo={musics} /> : null}
-            </div>
-        </div>
+            </section>
+        </main>
     );
 }
 
