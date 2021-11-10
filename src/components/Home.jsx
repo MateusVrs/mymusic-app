@@ -20,17 +20,17 @@ const Home = () => {
 
     if (topMusicsJSON == null) {
         return (
-            <div className="home-container">
-            </div>
+            <main className="home-container">
+            </main>
         );
     } else {
         return (
-            <div className="home-container">
+            <main className="home-container">
                 <MainHeader />
                 <section className="home-content">
                     <MusicList JsonInfo={topMusicsJSON} />
                 </section>
-            </div>
+            </main>
         );
     }
 }

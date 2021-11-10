@@ -8,11 +8,11 @@ const Navigation = () => {
 
     return (
         <div className="nav-container">
-            <div className="nav-items-container">
+            <nav className="nav-items-container">
                 <Link className={`nav-item ${navHome}`} to="/" ><span className="material-icons-outlined">home</span>Home</Link>
                 <Link className={`nav-item ${navSearch}`} to="/search" ><span className="material-icons-outlined">search</span>Search</Link>
                 <Link className={`nav-item ${navGenres}`} to="/genres" ><span className="material-icons-outlined">music_note</span>Genres</Link>
-            </div>
+            </nav>
         </div>
     );
 }

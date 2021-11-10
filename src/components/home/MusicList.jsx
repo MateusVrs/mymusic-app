@@ -4,7 +4,7 @@ import MusicCard from "../MusicCard";
 const MusicList = ({ JsonInfo }) => {
     return (
         <div className="music-list-container">
-            <h1>Top 20 Global Musics</h1>
+            <h2>Top 20 Global Musics</h2>
             <div className="music-list">
                 {JsonInfo.map((info, index) => {
                     const track = info.track;
