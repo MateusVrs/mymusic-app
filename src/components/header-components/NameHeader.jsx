@@ -1,6 +1,6 @@
 import React from "react";
 
-const MainHeader = () => {
+const NameHeader = () => {
     return (
         <header className="main-header">
             <h1>!MyMusic</h1>
@@ -8,4 +8,4 @@ const MainHeader = () => {
     );
 }
 
-export default MainHeader;
+export default NameHeader;

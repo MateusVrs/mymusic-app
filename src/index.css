@@ -38,34 +38,31 @@ body::-webkit-scrollbar-thumb {
 }
 
 #root {
+  display:  grid;
+  grid-template-columns: minmax(160px, 1fr) 8fr minmax(160px, 1fr);
   min-height: 100vh;
   background-color: var(--app-main-color);
   background-image: linear-gradient(to bottom, var(--top-gradient-color) 0 0.5%, var(--app-main-color) 10% 100%);
 } 
 
-.container {
-  display:  flex;
+.main-container {
+  margin: 1.2rem 0 1.2rem;
   min-height: 100vh;
 }
 
-.home-container {
-  width: 100%;
-}
-
 .main-header {
-  padding: 10px;
-  margin-bottom: 2.5rem;
+  font-size: 15px;
+  margin-bottom: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.nav-container, .asidebar-container {
+.aside-container {
   background-color: var(--nav-main-color);
-  width: 250px;
 }
 
-.nav-items-container {
+.nav-items {
   display: flex;
   flex-direction: column;
   padding: 60px 0 30px 30px;
@@ -88,21 +85,15 @@ body::-webkit-scrollbar-thumb {
   color: var(--nav-main-color);
 }
 
-.search-container {
-  width: 100%;
-  min-height: 100vh;
-}
-
-.search-header {
+.header-container {
   display: flex;
   justify-content: space-around;
-  align-items: baseline;
-  margin: 20px;
-  margin-bottom: 3rem;
+  align-items: center;
+  margin-bottom: 2rem;
   gap: 10px;
 }
 
-.search-header .main-header {
+.header-container .main-header {
   margin: 0;
   padding: 0;
 }
@@ -129,36 +120,30 @@ body::-webkit-scrollbar-thumb {
   color: var(--app-main-color);
 }
 
-.music-list-container {
+.home-content {
   display: flex;
   flex-direction: column;
 }
 
-.music-list-container > h2 {
+.home-content > h2 {
   text-align: center;
   margin-bottom: 1rem;
 }
 
-.music-list, .search-music-list {
+.music-list {
   display: grid;
-  gap: 1.6rem;
+  gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
   align-items: end;
 }
 
-
-/* Music Page */
-.music-container {
-  width: 100%;
-  height: 100vh;
-}
-
 .music-header {
+  font-size: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin: 1.5rem 0 1.5rem;
+  margin-bottom: 1.5rem;
   gap: 10px;
   text-align: center;
 }
@@ -176,6 +161,8 @@ body::-webkit-scrollbar-thumb {
 .music-card-container {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 155px;
 }
 
 .music-card {
@@ -185,9 +172,9 @@ body::-webkit-scrollbar-thumb {
   justify-content: flex-start;
   background-image: linear-gradient(to bottom, hsla(0, 0%, 25%, 1), hsla(0, 0%, 25%, 0.5));
   width: 95%;
+  height: 95%;
   border-radius: 15px;
   position: relative;
-  height: 155px;
 }
 
 .music-card:hover {
@@ -212,8 +199,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 .music-card-link img {
-  width: 155px;
-  height: 155px;
+  width: 150px;
+  height: 100%;
+  border-radius: 15px;
 }
 
 .music-info {
@@ -225,30 +213,23 @@ body::-webkit-scrollbar-thumb {
   gap: 5px;
 }
 
-.music-content img {
-  border-radius: 15px;
-}
-
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
   #root {
+    display: flex;
+    flex-direction: column;
     background-image: linear-gradient(to bottom, var(--top-gradient-color) 0% 10.5%, var(--app-main-color) 20% 100%);
   }
 
-  .container {
-    display: flex;
-    flex-direction: column;
+  .aside-container {
+    width: 100%;
+    height: 75px;
   }
 
   .music-content iframe {
     height: 20em;
   }
 
-  .nav-container {
-    width: 100%;
-    height: 75px;
-  }
-
-  .nav-items-container {
+  .nav-items {
     padding: 20px;
     flex-direction: row;
     justify-content: center;
@@ -256,9 +237,5 @@ body::-webkit-scrollbar-thumb {
 
   .nav-item {
     border-radius: 15px;
-  }
-
-  .asidebar-container {
-    display: none;
   }
 }

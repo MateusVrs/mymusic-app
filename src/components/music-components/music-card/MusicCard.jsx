@@ -9,9 +9,7 @@ const MusicCard = ({ musicPath, musicName, artistName, albumImg }) => {
                     <span className="material-icons">play_circle_filled</span>
                 </Link>
                 <Link className="music-card-link" to={`/music/${musicPath}`} >
-                    <section className="music-content">
-                        <img alt={`'${musicName}' music album`} src={`${albumImg}`} />
-                    </section>
+                    <img alt={`'${musicName}' music album`} src={`${albumImg}`} />
                 </Link>
                 <section className="music-info">
                     <h1>{musicName}</h1>
