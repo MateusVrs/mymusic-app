@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import getMusic from "../spotify/getMusic";
-import Header from "./music/Header";
-import Content from "./music/Content";
+import Header from "./music-components/music-card/Header";
+import Content from "./music-components/music-card/Content";
 
 function Music() {
     const { musicId } = useParams();
@@ -21,15 +21,15 @@ function Music() {
 
     if (trackJSON == null) {
         return (
-            <div className="music-container" >
-            </div>
+            <main className="main-container" >
+            </main>
         );
     } else {
         return (
-            <div className="music-container" >
+            <main className="main-container" >
                 <Header artistInfo={trackJSON.artists} musicInfo={trackJSON} />
                 <Content spotifyMusicId={trackJSON.id} />
-            </div>
+            </main>
         );
     }
 }
