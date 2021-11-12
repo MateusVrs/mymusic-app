@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import getToken from './getToken';
 
-async function searchMusic(musicSearch, limit) {
+async function searchMusics(musicSearch, limit) {
     var response = await $.ajax({
         method: "GET",
         dataType: "Json",
@@ -16,4 +16,4 @@ async function searchMusic(musicSearch, limit) {
 
 }
 
-export default searchMusic;
+export default searchMusics;
