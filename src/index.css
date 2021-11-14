@@ -98,6 +98,11 @@ body::-webkit-scrollbar-thumb {
   padding: 0;
 }
 
+.genre-header {
+  text-align: center;
+  margin: 1rem 0 1rem;
+}
+
 .search-item {
   display: flex;
   align-items: center;
@@ -130,7 +135,7 @@ body::-webkit-scrollbar-thumb {
   margin-bottom: 1rem;
 }
 
-.music-list {
+.music-list, .genre-list {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
@@ -158,14 +163,27 @@ body::-webkit-scrollbar-thumb {
   border-radius: 15px;
 }
 
-.music-card-container {
+.music-card-container, .genre-card-container {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.music-card-container {
   height: 155px;
 }
 
-.music-card {
+.genre-card-container {
+  height: 230px;
+}
+
+.genre-btn {
+  all: unset;
+  width: 95%;
+  height: 95%;
+}
+
+.music-card, .genre-card {
   display: flex;
   gap: 10px;
   align-items: stretch;
@@ -177,7 +195,11 @@ body::-webkit-scrollbar-thumb {
   position: relative;
 }
 
-.music-card:hover {
+.genre-card {
+  justify-content: space-between;
+}
+
+.music-card:hover, .genre-card:hover {
   background-image: linear-gradient(to bottom, hsla(0, 0%, 25%, 1), hsla(0, 0%, 25%, 0.4));
 }
 
@@ -204,6 +226,17 @@ body::-webkit-scrollbar-thumb {
   border-radius: 15px;
 }
 
+.genre-card h2 {
+  text-transform: capitalize;
+  margin-left: 10px;
+}
+
+.genre-card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 15px;
+}
+
 .music-info {
   display: flex;
   flex-direction: column;
@@ -211,6 +244,29 @@ body::-webkit-scrollbar-thumb {
   font-size: 12px;
   margin-right: 15px;
   gap: 5px;
+}
+
+/* LoadingCircle */
+.loading-container {
+  margin: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-circle {
+  animation: rotating 1.5s infinite;
+  height: 4rem;
+  width: 4rem;
+  border: 0.3rem solid var(--bg-input-search);
+  border-top-color: var(--top-gradient-color);
+  border-radius: 50%;
+}
+
+@keyframes rotating {
+  to {
+    transform: rotate(1turn);
+  }
 }
 
 @media (max-width: 1000px) {
