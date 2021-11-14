@@ -1,31 +1,21 @@
 import React from "react";
 import NameHeader from "./NameHeader";
+import userTyping from "./functions/userTyping";
 
-const SearchHeader = ({ setValue, action, limit }) => {
-    var interval;
-
-    async function handleOnChange(searchValue) {
-        const returnedMusics = await action(searchValue, limit);
-        if (returnedMusics !== null) {
-            setValue(returnedMusics);
-        }
-    }
-
-    async function userTyping(value) {
-        clearTimeout(interval);
-        interval = setTimeout(() => handleOnChange(value), 1800);
-    }
-
+const SearchHeader = ({ setValue, isTyping, suggestOptions, action, limit }) => {
     return (
         <section className="header-container">
             <NameHeader />
             <div className="search-item">
                 <span className="material-icons search-icon">search</span>
-                <input className="search" id="search" type="text" placeholder="Type to search..." maxLength="25" onChange={(e) => {
+                <input list="suggest-list" className="search" id="search" type="text" placeholder="Type to search..." maxLength="25" onChange={(e) => {
                     if (e.target.value.trim() !== "") {
-                        userTyping(e.target.value.trim());
+                        userTyping(setValue, action, e.target.value.trim(), limit, isTyping);
                     }
                 }} />
+                <datalist id="suggest-list">
+                    {suggestOptions ? suggestOptions.map(suggest => <option key={suggest} value={suggest} />) : null}
+                </datalist>
             </div>
         </section>
     );
