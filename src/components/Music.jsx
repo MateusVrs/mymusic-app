@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import getMusic from "../spotify/getMusic";
 import Header from "./music-components/music-card/Header";
 import Content from "./music-components/music-card/Content";
+import LoadingCircle from "./general-components/LoadingCircle";
 
 function Music() {
     const { musicId } = useParams();
@@ -22,6 +23,7 @@ function Music() {
     if (trackJSON == null) {
         return (
             <main className="main-container" >
+                <LoadingCircle />
             </main>
         );
     } else {

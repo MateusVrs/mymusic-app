@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import getTopMusics from "../spotify/getTopMusics";
 import MusicList from "./music-components/MusicList";
 import NameHeader from "./header-components/NameHeader";
+import LoadingCircle from "./general-components/LoadingCircle";
 
 const Home = () => {
     const [topMusicsJSON, setTopMusicsJSON] = useState(null);
@@ -20,6 +21,7 @@ const Home = () => {
     if (topMusicsJSON === null) {
         return (
             <main className="main-container">
+                <LoadingCircle />
             </main>
         );
     } else {

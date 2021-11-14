@@ -2,10 +2,10 @@ import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navigation from "./components/general-components/Navigation";
 import AsideBar from "./components/general-components/AsideBar";
-import Music from "./components/Music";
 import Home from "./components/Home";
 import Search from "./components/Search";
 import Genres from "./components/Genres";
+import Music from "./components/Music";
 
 const App = () => {
   return (
