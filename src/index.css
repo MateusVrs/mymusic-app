@@ -231,10 +231,12 @@ body::-webkit-scrollbar-thumb {
   margin-left: 10px;
 }
 
-.genre-card img {
-  width: 120px;
-  height: 120px;
-  border-radius: 15px;
+.genre-card span {
+  padding: 15px;
+}
+
+.genre-card span:hover {
+  cursor: pointer;
 }
 
 .music-info {

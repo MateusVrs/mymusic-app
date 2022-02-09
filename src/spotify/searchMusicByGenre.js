@@ -10,12 +10,8 @@ async function searchMusicByGenre(genreSearch, limit) {
             Authorization: `Bearer ${getToken()}`
         }
     });
-    let tracksJSON = {
-        items: response.tracks,
-        genreId: response.seeds[0].id
-    };
-    return tracksJSON;
-
+    
+    return response;
 
 }
 

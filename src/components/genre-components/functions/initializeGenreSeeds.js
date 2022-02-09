@@ -1,5 +1,4 @@
 import getGenreSeeds from "../../../spotify/getGenreSeeds";
-import searchMusicByGenre from "../../../spotify/searchMusicByGenre";
 
 function randomNumber(limit) {
     return parseInt(Math.random() * limit);
@@ -11,12 +10,10 @@ async function initializeGenreSeeds(setGenres, setRadomGenres) {
         setGenres(genreSeeds);
         const arrayLength = 8
         var newRadomGenres = {
-            seeds: Array(arrayLength).fill(null),
-            images: Array(arrayLength).fill(null)
+            seeds: Array(arrayLength).fill(null)
         };
         for (let i = 0; i < arrayLength; i++) {
             newRadomGenres.seeds[i] = genreSeeds[randomNumber(genreSeeds.length)];
-            newRadomGenres.images[i] = (await searchMusicByGenre(newRadomGenres.seeds[i], 1)).items[0].album.images[0].url;
         }
         setRadomGenres(newRadomGenres);
     }
